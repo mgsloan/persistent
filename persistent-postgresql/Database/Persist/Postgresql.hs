@@ -1018,13 +1018,13 @@ showAlter table (_, DropReference cname) = T.concat
     , escape cname
     ]
 
--- | get the SQL string for the table that a PeristEntity represents
--- Useful for raw SQL queries
+-- | Get the SQL string for the table that a 'PersistEntity' represents.
+-- Useful for raw SQL queries.
 tableName :: (PersistEntity record) => record -> Text
 tableName = escape . tableDBName
 
--- | get the SQL string for the field that an EntityField represents
--- Useful for raw SQL queries
+-- | Get the SQL string for the field that an 'EntityField' represents.
+-- Useful for raw SQL queries.
 fieldName :: (PersistEntity record) => EntityField record typ -> Text
 fieldName = escape . fieldDBName
 
@@ -1145,7 +1145,7 @@ mockMigrate allDefs _ entity = fmap (fmap $ map showAlterDb) $ do
 
 -- | Mock a migration even when the database is not present.
 -- This function performs the same functionality of 'printMigration'
--- with the difference that an actualy database isn't needed for it.
+-- with the difference that an actual database isn't needed for it.
 mockMigration :: Migration -> IO ()
 mockMigration mig = do
   smap <- newIORef $ Map.empty
